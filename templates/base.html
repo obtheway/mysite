@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/base.css'%}">
+    <link rel="stylesheet" href="{% static 'bootstrap-3.4.1/css/bootstrap.min.css' %}">
+    <script type="text/javascript" src="{% static 'jquery-1.11.1.js' %}"></script>
+    <script type="text/javascript" src="{% static 'bootstrap-3.4.1/js/bootstrap.min.js'%}"></script>
+    {% block header_extends %}{% endblock %}
+</head>
+<body>
+    <div class="navbar navbar-default" role="navigation">
+       <div class="container">
+           <div class="navbar-header">
+               <a class="navbar-brand" href="{% url 'home' %}">个人博客网站
+                </a>
+           </div>
+              <div>
+                   <ul class="nav navbar-nav">
+                       <li class="{% block nav_home_active%}{% endblock %}"><a href="/">首页</a></li>
+                       <li class="{% block nav_blog_active%}{% endblock %}"><a href="{% url 'blog_list' %}">博客</a></li>
+                       <li><a href="{% url 'login' %}">登录</a></li>
+                       <li><a href="{% url 'logout' %}">退出登录</a></li>
+                       <li><a href="{% url 'info' %}">个人信息</a></li>
+                    </ul>
+             </div>
+       </div>
+    </div>
+
+  {% block content%}{% endblock%}
+{% block script_extends %}{% endblock %}
+</body>
+</html>
